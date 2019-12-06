@@ -1,5 +1,5 @@
 from Indicator import Indicator
-from Battery import Battery, BatteryHolder, BatteryType
+from Battery import BatteryHolder, BatteryType
 from SerialNumber import SerialNumber
 from Port import Port, PortType
 
