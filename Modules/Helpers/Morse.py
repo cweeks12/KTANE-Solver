@@ -1,4 +1,5 @@
 class Morse:
+
     DOT = '.'
     DASH = '-'
 
@@ -42,6 +43,8 @@ class Morse:
         (DASH, DASH, DASH, DASH, DOT): '9'
     }
 
+
+
     def toTuple(morseString):
         characterList = []
         for character in morseString:
@@ -54,12 +57,11 @@ class Morse:
         return tuple(characterList)
 
 
-    def morseToWord(morseWord, delimiter=' '):
+    def morseToWord(morseWord, delimiter=' ', uppercase=True):
         newWord = ''
         for word in morseWord.split(delimiter):
             newWord += Morse.characters[Morse.toTuple(word)]
-
-        return newWord
+        return newWord if uppercase else newWord.lower()
 
 if __name__ == '__main__':
-    print(Morse.morseToWord('-.- - .- -. . -- --- .-. ... . ... --- .-.. ...- . .-.'))
+    print(Morse().morseToWord('-.- - .- -. . -- --- .-. ... . ... --- .-.. ...- . .-.'))
