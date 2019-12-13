@@ -54,10 +54,12 @@ class Morse:
         return tuple(characterList)
 
 
-    def morseToWord(morse):
-        if not isinstance(morse, tuple):
-            morse = toTuple(morse)
-        return characters[morse]
+    def morseToWord(morseWord, delimiter=' '):
+        newWord = ''
+        for word in morseWord.split(delimiter):
+            newWord += Morse.characters[Morse.toTuple(word)]
+
+        return newWord
 
 if __name__ == '__main__':
-    morseTo
+    print(Morse.morseToWord('-.- - .- -. . -- --- .-. ... . ... --- .-.. ...- . .-.'))
