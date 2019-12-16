@@ -1,7 +1,7 @@
-from Indicator import Indicator
-from Battery import BatteryHolder, BatteryType
-from SerialNumber import SerialNumber
-from Port import Port, PortType
+from . Indicator import Indicator
+from . Battery import BatteryHolder, BatteryType
+from . SerialNumber import SerialNumber
+from . Port import Port, PortType
 
 class Bomb:
 
@@ -20,12 +20,15 @@ class Bomb:
 
     def addBatteryHolder(self, type, quantity):
         self._batteryHolders.append(BatteryHolder(type, quantity))
+        return self
 
     def addPort(self, type):
         self._ports.append(Port(type))
+        return self
 
-    def addIndicator(self, lit, label):
+    def addIndicator(self, label, lit=False):
         self._indicators.append(Indicator(lit, label))
+        return self
 
     def setNumberOfModules(self, modules, solved=0):
         if modules < 1  or solved < 0:
@@ -34,6 +37,7 @@ class Bomb:
         self._modules = modules
         self._solved = solved
         self._unsolved = modules - solved
+        return self
 
     def getNumberOfModules(self):
         return self._modules
@@ -52,6 +56,7 @@ class Bomb:
 
     def incrementStrikes(self):
         self._strikes += 1
+        return self
 
     def serialNumberContainsVowel(self):
         return self._serialNumber.containsVowel()

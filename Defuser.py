@@ -1,5 +1,7 @@
-from Bomb import Bomb
-from Colors import Colors
+from Modules.Helpers.Bomb.Bomb import Bomb
+from Modules.Helpers.Colors import Colors
+
+import Modules.TheButton
 
 class Defuser:
     def __init__(self, serialNumber):
@@ -25,14 +27,14 @@ class Defuser:
         red = 8
 
         wireCharacteristics = wireCharacteristics.upper()
-            if 'S' in wireCharacteristics:
-                total += star
-            if 'L' in wireCharacteristics:
-                total += led
-            if 'B' in wireCharacteristics:
-                total += blue
-            if 'R' in wireCharacteristics:
-                total += red
+        if 'S' in wireCharacteristics:
+            total += star
+        if 'L' in wireCharacteristics:
+            total += led
+        if 'B' in wireCharacteristics:
+            total += blue
+        if 'R' in wireCharacteristics:
+            total += red
 
         options = [ Action.CUT, Action.CUT, Action.DO_NOT_CUT, Action.BATTERIES,
                     Action.EVEN_SERIAL, Action.DO_NOT_CUT, Action.PARALLEL, Action.PARALLEL,
@@ -81,6 +83,5 @@ class Defuser:
 
         return pressesToReturn
 
-
-d = Defuser('123ABC')
-print(d.wires('RBYW'))
+if __name__ == '__main__':
+    d = Defuser('123ABC')
