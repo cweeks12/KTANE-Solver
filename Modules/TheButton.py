@@ -4,7 +4,9 @@ try:
     from Helpers.Bomb.Indicator import Indicator
     from Helpers.Bomb.Battery import BatteryType
     from Helpers.Colors import Colors
+
 except ModuleNotFoundError:
+    #This is from context in the Defuser class
     from Modules.Helpers.Bomb.Bomb import Bomb
     from Modules.Helpers.Bomb.Indicator import Indicator
     from Modules.Helpers.Colors import Colors
