@@ -5,7 +5,7 @@ from . Port import Port, PortType
 
 class Bomb:
 
-    def __init__(self, serialNumber, modules=None, solved=None):
+    def __init__(self, serialNumber, batteryHolders=None, modules=None, solved=None):
         self._serialNumber = SerialNumber(serialNumber)
         self._batteryHolders = []
         self._ports = []

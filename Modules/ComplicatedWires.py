@@ -13,9 +13,6 @@ from enum import Enum, auto
 
 class ComplicatedWires:
 
-    CUT = 'Cut'
-    DO_NOT_CUT = "Don't Cut"
-
     class Action(Enum):
         CUT = auto()
         DO_NOT_CUT = auto()
