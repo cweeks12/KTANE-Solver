@@ -1,39 +1,17 @@
 from Modules.Helpers.Bomb.Bomb import Bomb
 from Modules.Helpers.Colors import Colors
+from Modules.Helpers.Bomb.Battery import BatteryHolder, BatteryType
+from Modules.Helpers.Bomb.Indicator import Indicator
+from Modules.Helpers.Bomb.Port import Port, PortType
 
 import Modules.TheButton
 
 class Defuser:
-    def __init__(self, serialNumber):
-        self.bomb = Bomb(serialNumber)
+    def __init__(self, serialNumber, modules, batteryHolders=None, indicators=None, ports=None):
+        self.bomb = Bomb(serialNumber, batteryHolders, indicators, ports, modules)
 
-    def simonSays(self, flashes):
-        if not isinstance(flashes, list):
-            raise ValueError('Need a list')
-        for flash in flashes:
-            if not isinstance(flash, Colors):
-                raise ValueError('Need Colors')
-
-        vowelTranslations = {Colors.RED: [Colors.BLUE, Colors.YELLOW, Colors.GREEN],
-                        Colors.BLUE: [Colors.RED, Colors.GREEN, Colors.RED],
-                        Colors.GREEN: [Colors.YELLOW, Colors.BLUE, Colors.YELLOW],
-                        Colors.YELLOW: [Colors.GREEN, Colors.RED, Colors.BLUE]}
-
-        noVowelTranslation = {Colors.RED: [Colors.BLUE, Colors.RED, Colors.YELLOW],
-                        Colors.BLUE: [Colors.YELLOW, Colors.BLUE, Colors.GREEN],
-                        Colors.GREEN: [Colors.GREEN, Colors.YELLOW, Colors.BLUE],
-                        Colors.YELLOW: [Colors.RED, Colors.GREEN, Colors.RED]}
-
-        if bomb.serialNumberContainsVowel():
-            selectedDictionary = vowelTranslations
-        else:
-            selectedDictionary = noVowelTranslation
-
-        pressesToReturn = []
-        for flash in flashes:
-            pressesToReturn.append(selectedDictionary[flash][bomb.getNumberOfStrikes()])
-
-        return pressesToReturn
+    def getBomb(self):
+        return self.bomb
 
 if __name__ == '__main__':
-    d = Defuser('123ABC')
+    d = Defuser('123ABC', 5)

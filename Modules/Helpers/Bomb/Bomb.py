@@ -1,11 +1,18 @@
-from . Indicator import Indicator
-from . Battery import BatteryHolder, BatteryType
-from . SerialNumber import SerialNumber
-from . Port import Port, PortType
+try:
+    from . Indicator import Indicator
+    from . Battery import BatteryHolder, BatteryType
+    from . SerialNumber import SerialNumber
+    from . Port import Port, PortType
+
+except ModuleNotFoundError:
+    from Indicator import Indicator
+    from Battery import BatteryHolder, BatteryType
+    from SerialNumber import SerialNumber
+    from Port import Port, PortType
 
 class Bomb:
 
-    def __init__(self, serialNumber, batteryHolders=None, modules=None, solved=None):
+    def __init__(self, serialNumber, batteryHolders=None, indicators=None, ports=None, modules=None, solved=None):
         self._serialNumber = SerialNumber(serialNumber)
         self._batteryHolders = []
         self._ports = []
